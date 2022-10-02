@@ -1,0 +1,3 @@
+AWX:
+  namespace: awx
+  passwordEncoded: password

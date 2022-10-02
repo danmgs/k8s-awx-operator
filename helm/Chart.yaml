@@ -1,0 +1,4 @@
+apiVersion: v1
+description: A Helm chart to create an instance of AWX Operator
+name: awx-operator-instance
+version: 1.0.0
