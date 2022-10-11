@@ -22,6 +22,7 @@ helm uninstall awx-operator-instance -n awx
 
 kubectl get secret awx-operator-instance-admin-password -n awx -o json
 kubectl get secret awx-operator-instance-admin-password -n awx -o json "{.data.password }" | base64 --decode
+https://www.base64decode.org/
 
 # Voir les endpoints des services
 kubectl get endpoints -n awx
@@ -41,6 +42,12 @@ kubectl  describe svc awx-operator-instance-service -n awx
 kubectl get svc awx-operator-instance-service -n awx -o yaml
 
 kubectl get events
+
+# port forwarding (pour le debug)
+https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
+kubectl describe po awx-operator-instance-76c8c9b5ff-ms8pl -n awx | grep -i port
+kubectl port-forward awx-operator-instance-76c8c9b5ff-ms8pl 8052:8052  -n awx
+ENsuite, taper http://127.0.0.1:8052 dans le browser
 
 # Liens utiles
 
