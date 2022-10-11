@@ -1,0 +1,10 @@
+---
+apiVersion: awx.ansible.com/v1beta1
+kind: AWX
+metadata:
+  name: awx-operator-instance
+  namespace: awx
+spec:
+  service_type: nodeport
+  # default nodeport_port is 30080
+  nodeport_port: 30081
