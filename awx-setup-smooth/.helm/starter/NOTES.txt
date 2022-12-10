@@ -1,0 +1,31 @@
+helm install my-awx-operator awx-operator/awx-operator -n awx --create-namespace -f values.yaml --set AWX.spec.admin_password_secret=mypassword
+helm uninstall my-awx-operator -n awx
+helm list -n awx
+
+kubectl get secret awx-admin-password -o jsonpath="{.data.password}" -n awx
+
+kubectl api-resources
+kubectl api-versions
+
+
+kubectl apply -f awx-ingress.yaml -n awx
+kubectl apply -f awx-admin-password.yaml -n awx
+
+
+# installer l'operateur awx-operator
+helm install my-awx-operator awx-operator/awx-operator -n awx --create-namespace -f values.yaml --set AWX.spec.admin_password_secret=mypassword
+
+# installer une CR AWX
+helm install my-awx . -n awx --create-namespace -f myvalues.yaml --set AWX.spec.admin_password_secret=mypassword
+helm uninstall my-awx --namespace awx
+
+
+
+
+# Au final
+
+helm uninstall my-awx-operator -n awx
+helm install my-awx-operator awx-operator/awx-operator -n awx --create-namespace
+
+helm uninstall my-awx --namespace awx
+helm install my-awx . -n awx --create-namespace -f values.yaml --set AWX.spec.admin_password_secret=mypassword

@@ -1,0 +1,16 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.AWX.name }}-ingress
+  namespace: {{ $.Release.Namespace }}
+spec:
+  rules:
+  - host: awx-demo.example.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          serviceName: awx-service
+          servicePort: 80
